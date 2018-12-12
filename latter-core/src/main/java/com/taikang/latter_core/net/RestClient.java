@@ -8,6 +8,7 @@ import com.taikang.latter_core.net.callback.IFailure;
 import com.taikang.latter_core.net.callback.IRequest;
 import com.taikang.latter_core.net.callback.ISuccess;
 import com.taikang.latter_core.net.callback.RequestCallbacks;
+import com.taikang.latter_core.net.download.DownloadHandler;
 import com.taikang.latter_core.ui.LatteLoader;
 import com.taikang.latter_core.ui.LoaderCreator;
 import com.taikang.latter_core.ui.LoaderStyle;
@@ -39,6 +40,9 @@ public class RestClient {
     private final LoaderStyle LOADERSTYLE;
     private final Context CONTEXT;
     private final File FILE;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
 
 
     public RestClient(String url,
@@ -50,7 +54,10 @@ public class RestClient {
                       RequestBody body,
                       LoaderStyle loaderStyle,
                       Context context,
-                      File file) {
+                      File file,
+                      String downloadDir,
+                      String extension,
+                      String name) {
         URL = url;
         PARAMS.putAll(params);
         REQUEST = request;
@@ -61,6 +68,9 @@ public class RestClient {
         LOADERSTYLE = loaderStyle;
         CONTEXT = context;
         FILE = file;
+        DOWNLOAD_DIR = downloadDir;
+        EXTENSION = extension;
+        NAME = name;
     }
 
     public static RestClientBuilder builder() {
@@ -149,5 +159,10 @@ public class RestClient {
 
     public final void upLoad() {
         request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, SUCCESS, ERROR, FAILURE, DOWNLOAD_DIR, EXTENSION, NAME).handleDownload();
+
     }
 }
