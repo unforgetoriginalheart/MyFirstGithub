@@ -8,6 +8,7 @@ import com.taikang.latter_core.net.callback.IRequest;
 import com.taikang.latter_core.net.callback.ISuccess;
 import com.taikang.latter_core.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -30,6 +31,7 @@ public class RestClientBuilder {
     private RequestBody mBody;
     private LoaderStyle mLoaderStyle;
     private Context mContext;
+    private File mFile;
 
     RestClientBuilder() {
     }
@@ -51,6 +53,11 @@ public class RestClientBuilder {
 
     public final RestClientBuilder params(String raw) {
         this.mBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), raw);
+        return this;
+    }
+
+    public final RestClientBuilder file(File file) {
+        this.mFile = file;
         return this;
     }
 
@@ -87,6 +94,6 @@ public class RestClientBuilder {
     }
 
     public final RestClient build() {
-        return new RestClient(mUrl, PARAMS, mRequest, mSuccess, mError, mFailure, mBody, mLoaderStyle, mContext);
+        return new RestClient(mUrl, PARAMS, mRequest, mSuccess, mError, mFailure, mBody, mLoaderStyle, mContext, mFile);
     }
 }
