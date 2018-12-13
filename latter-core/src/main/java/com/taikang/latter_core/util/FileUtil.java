@@ -4,13 +4,17 @@ import android.annotation.SuppressLint;
 import android.os.Environment;
 import android.webkit.MimeTypeMap;
 
+import com.taikang.latter_core.app.Latte;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -175,5 +179,32 @@ public class FileUtil {
     public static File createFileByTime(String sdcardDirName, String timeFormatHeader, String extensin) {
         String fileName = getFileNameByTime(timeFormatHeader, extensin);
         return createFile(sdcardDirName, fileName);
+    }
+
+    public static String getRawFile(int rawId) {
+        InputStream is = Latte.getApplicationContext().getResources().openRawResource(rawId);
+        BufferedInputStream bis = new BufferedInputStream(is);
+        InputStreamReader isr = new InputStreamReader(bis);
+        BufferedReader br = new BufferedReader(isr);
+        StringBuilder stringBuilder = new StringBuilder();
+        String str;
+        try {
+            while ((str = br.readLine()) != null) {
+                stringBuilder.append(str);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+                isr.close();
+                bis.close();
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return stringBuilder.toString();
     }
 }

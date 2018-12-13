@@ -2,7 +2,6 @@ package com.taikang.latter_core.net;
 
 import android.content.Context;
 
-import com.taikang.latter_core.app.Latte;
 import com.taikang.latter_core.net.callback.IError;
 import com.taikang.latter_core.net.callback.IFailure;
 import com.taikang.latter_core.net.callback.IRequest;
@@ -10,7 +9,6 @@ import com.taikang.latter_core.net.callback.ISuccess;
 import com.taikang.latter_core.net.callback.RequestCallbacks;
 import com.taikang.latter_core.net.download.DownloadHandler;
 import com.taikang.latter_core.ui.LatteLoader;
-import com.taikang.latter_core.ui.LoaderCreator;
 import com.taikang.latter_core.ui.LoaderStyle;
 
 import java.io.File;
@@ -22,7 +20,6 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.http.Multipart;
 
 /**
  * Time：2018/12/10
@@ -162,7 +159,13 @@ public class RestClient {
     }
 
     public final void download() {
-        new DownloadHandler(URL, REQUEST, SUCCESS, ERROR, FAILURE, DOWNLOAD_DIR, EXTENSION, NAME).handleDownload();
-
+        new DownloadHandler(URL,
+                REQUEST,
+                SUCCESS,
+                ERROR,
+                FAILURE,
+                DOWNLOAD_DIR,
+                EXTENSION, NAME)
+                .handleDownload();
     }
 }
