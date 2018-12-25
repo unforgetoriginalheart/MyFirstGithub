@@ -1,4 +1,4 @@
-package com.taikang.latter_core.util;
+package com.taikang.latter_core.util.file;
 
 import android.annotation.SuppressLint;
 import android.os.Environment;
@@ -10,7 +10,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

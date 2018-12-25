@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 27
@@ -6,7 +8,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -26,4 +28,5 @@ android {
 
 dependencies {
     api project(':latter-core')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
 }

@@ -1,4 +1,4 @@
-package com.taikang.latter_core.ui;
+package com.taikang.latter_core.ui.loader;
 
 /**
  * Time：2018/12/11

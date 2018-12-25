@@ -16,27 +16,33 @@ import okhttp3.Interceptor;
 public class Latte {
 
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT, context.getApplicationContext());
+        Configurator.getInstance()
+                .getLatteConfigs()
+                .put(ConfigType.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static HashMap<Object, Object> getConfigurations() {
-        return Configurator.getInstance().getLatteConfigs();
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
     }
 
     //获取application上下文
     public static Context getApplicationContext() {
-        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT);
+        return (Context) getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 
     //获取api_host
     public static String getApiHost() {
-        return (String) getConfigurations().get(ConfigType.API_HOST);
+        return (String) getConfiguration(ConfigType.API_HOST);
     }
 
     //获取interceptors
     @SuppressWarnings("unchecked")
     public static ArrayList<Interceptor> getInterceptors() {
-        return (ArrayList<Interceptor>) getConfigurations().get(ConfigType.INTERCEPTOR);
+        return (ArrayList<Interceptor>) getConfiguration(ConfigType.INTERCEPTOR);
     }
 }

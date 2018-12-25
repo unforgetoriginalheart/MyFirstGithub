@@ -1,4 +1,4 @@
-package com.taikang.latter_core.ui;
+package com.taikang.latter_core.ui.loader;
 
 import android.content.Context;
 import android.text.TextUtils;

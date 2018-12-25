@@ -3,8 +3,8 @@ package com.taikang.latter_core.net.callback;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-import com.taikang.latter_core.ui.LatteLoader;
-import com.taikang.latter_core.ui.LoaderStyle;
+import com.taikang.latter_core.ui.loader.LatteLoader;
+import com.taikang.latter_core.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

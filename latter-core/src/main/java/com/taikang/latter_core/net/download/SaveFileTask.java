@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.taikang.latter_core.app.Latte;
 import com.taikang.latter_core.net.callback.IRequest;
 import com.taikang.latter_core.net.callback.ISuccess;
-import com.taikang.latter_core.util.FileUtil;
+import com.taikang.latter_core.util.file.FileUtil;
 
 import java.io.File;
 import java.io.InputStream;

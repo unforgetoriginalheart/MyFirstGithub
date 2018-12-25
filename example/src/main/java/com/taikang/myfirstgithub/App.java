@@ -5,6 +5,7 @@ import android.app.Application;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.taikang.latter_core.app.Latte;
 import com.taikang.latter_core.net.interceptors.DebugInterceptor;
+import com.taikang.latter_ec.database.DatabaseManager;
 import com.taikang.latter_ec.icon.FontEcModule;
 
 /**
@@ -20,8 +21,12 @@ public class App extends Application {
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
+                .withWechatId("")
+                .withWechatSecret("")
                 .withApiHost("http://127.0.0.1")
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
+
+        DatabaseManager.getInstance().init(this);
     }
 }

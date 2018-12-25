@@ -1,4 +1,4 @@
-package com.taikang.latter_core.util;
+package com.taikang.latter_core.util.dimen;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;

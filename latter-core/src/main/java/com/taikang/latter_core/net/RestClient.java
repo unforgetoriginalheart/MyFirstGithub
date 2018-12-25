@@ -8,8 +8,8 @@ import com.taikang.latter_core.net.callback.IRequest;
 import com.taikang.latter_core.net.callback.ISuccess;
 import com.taikang.latter_core.net.callback.RequestCallbacks;
 import com.taikang.latter_core.net.download.DownloadHandler;
-import com.taikang.latter_core.ui.LatteLoader;
-import com.taikang.latter_core.ui.LoaderStyle;
+import com.taikang.latter_core.ui.loader.LatteLoader;
+import com.taikang.latter_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

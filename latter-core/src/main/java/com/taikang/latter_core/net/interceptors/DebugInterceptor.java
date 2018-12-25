@@ -3,11 +3,10 @@ package com.taikang.latter_core.net.interceptors;
 import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 
-import com.taikang.latter_core.util.FileUtil;
+import com.taikang.latter_core.util.file.FileUtil;
 
 import java.io.IOException;
 
-import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.Protocol;
 import okhttp3.Response;

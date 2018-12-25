@@ -2,13 +2,8 @@ package com.taikang.latter_core.net.rx;
 
 import android.content.Context;
 
-import com.taikang.latter_core.net.RestClient;
 import com.taikang.latter_core.net.RestCreator;
-import com.taikang.latter_core.net.callback.IError;
-import com.taikang.latter_core.net.callback.IFailure;
-import com.taikang.latter_core.net.callback.IRequest;
-import com.taikang.latter_core.net.callback.ISuccess;
-import com.taikang.latter_core.ui.LoaderStyle;
+import com.taikang.latter_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.WeakHashMap;
