@@ -7,7 +7,6 @@ import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.WeakHashMap;
 
 import okhttp3.Interceptor;
 
@@ -23,7 +22,7 @@ public class Configurator {
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigType.CONFIG_READY, false);
     }
 
     /**相当于单例模式（线程安全的懒汉模式）**/
@@ -31,7 +30,7 @@ public class Configurator {
         private static final Configurator INSTANCE = new Configurator();
     }
 
-    public static Configurator getInstance() {
+    static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
@@ -68,11 +67,11 @@ public class Configurator {
         return this;
     }
 
-    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
-        INTERCEPTORS.addAll(interceptors);
-        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
-        return this;
-    }
+//    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+//        INTERCEPTORS.addAll(interceptors);
+//        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
+//        return this;
+//    }
 
     public final Configurator withWechatId(String appId) {
         LATTE_CONFIGS.put(ConfigType.WECHAT_APP_ID, appId);
@@ -84,13 +83,12 @@ public class Configurator {
         return this;
     }
 
-    public final Configurator withActivity(Activity activity) {
+    public final void withActivity(Activity activity) {
         LATTE_CONFIGS.put(ConfigType.ACTIVITY, activity);
-        return this;
     }
 
     private void checkConfiguration() {
-        boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigType.CONFIG_READY.name());
+        boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigType.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not really, call configure");
         }
@@ -104,6 +102,10 @@ public class Configurator {
     @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key) {
         checkConfiguration();
+        final Object value = LATTE_CONFIGS.get(key);
+        if (value == null) {
+            throw new NullPointerException(key.toString() + " IS NULL");
+        }
         return (T) LATTE_CONFIGS.get(key);
     }
 }

@@ -77,7 +77,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 @Override
                 public void onNotSignIn() {
                     if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
                     }
                 }
             });

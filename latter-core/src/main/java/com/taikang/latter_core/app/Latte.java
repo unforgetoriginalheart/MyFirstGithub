@@ -3,8 +3,6 @@ package com.taikang.latter_core.app;
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.WeakHashMap;
 
 import okhttp3.Interceptor;
 
@@ -32,7 +30,7 @@ public class Latte {
 
     //获取application上下文
     public static Context getApplicationContext() {
-        return (Context) getConfiguration(ConfigType.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 
     //获取api_host
