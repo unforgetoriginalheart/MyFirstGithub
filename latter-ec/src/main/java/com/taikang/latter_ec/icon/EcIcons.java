@@ -8,8 +8,8 @@ import com.joanzapata.iconify.Icon;
  * Description:
  */
 public enum  EcIcons implements Icon {
-    chrsmas('\ue610');
-
+    icon_scan('\ue602'),
+    icon_ali_pay('\ue606');
 
     private char character;
 
@@ -19,7 +19,7 @@ public enum  EcIcons implements Icon {
 
     @Override
     public String key() {
-        return name().replace("-", "_");
+        return name().replace('_', '-');
     }
 
     @Override

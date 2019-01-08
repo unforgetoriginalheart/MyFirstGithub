@@ -14,5 +14,6 @@ public enum ConfigType {
     INTERCEPTOR,
     WECHAT_APP_ID,
     WECHAT_APP_SECRET,
-    ACTIVITY
+    ACTIVITY,
+    HANDLER
 }

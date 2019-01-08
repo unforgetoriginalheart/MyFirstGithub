@@ -1,6 +1,7 @@
 package com.taikang.latter_core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,10 @@ public class Latte {
     //获取application上下文
     public static Context getApplicationContext() {
         return getConfiguration(ConfigType.APPLICATION_CONTEXT);
+    }
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigType.HANDLER);
     }
 
     //获取api_host
