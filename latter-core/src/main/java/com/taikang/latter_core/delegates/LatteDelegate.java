@@ -6,4 +6,9 @@ package com.taikang.latter_core.delegates;
  * Description:
  */
 public abstract class LatteDelegate extends PermissionCheckerDelegate {
+
+    @SuppressWarnings("unchecked")
+    public <T extends LatteDelegate> T getParentDelegate() {
+        return (T) getParentFragment();
+    }
 }

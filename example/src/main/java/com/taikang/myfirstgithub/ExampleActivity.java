@@ -15,6 +15,8 @@ import com.taikang.latter_ec.main.ECBottomDelegate;
 import com.taikang.latter_ec.sign.ISignListener;
 import com.taikang.latter_ec.sign.SignInDelegate;
 
+import qiu.niorgai.StatusBarCompat;
+
 public class ExampleActivity extends ProxyActivity implements
         ISignListener,
         ILauncherListener {
@@ -28,6 +30,8 @@ public class ExampleActivity extends ProxyActivity implements
         }
         //绑定当前的activity
         Latte.getConfigurator().withActivity(this);
+        //引入沉浸式状态栏
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

@@ -52,12 +52,13 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                 //进行网络请求
                 REFRESH_LAYOUT.setRefreshing(false);
             }
-        }, 3000);
+        }, 2000);
     }
 
     public void firstPage(String url) {
         ENTITY.setDelayed(1000);
-        RestClient.builder()
+        RestClient
+                .builder()
                 .url(url)
                 .success(new ISuccess() {
                     @Override

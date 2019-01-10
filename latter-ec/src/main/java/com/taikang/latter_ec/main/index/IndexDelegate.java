@@ -2,6 +2,7 @@ package com.taikang.latter_ec.main.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,11 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.taikang.latter_core.delegates.LatteDelegate;
 import com.taikang.latter_core.delegates.bottom.BottomItemDelegate;
+import com.taikang.latter_core.ui.recycler.divider.BaseDecoration;
 import com.taikang.latter_core.ui.refresh.RefreshHandler;
 import com.taikang.latter_ec.R;
 import com.taikang.latter_ec.R2;
+import com.taikang.latter_ec.main.ECBottomDelegate;
 
 import butterknife.BindView;
 
@@ -53,9 +58,13 @@ public class IndexDelegate extends BottomItemDelegate {
     }
 
     /**初始化RRecyclerView布局*/
+    @SuppressWarnings("ConstantConditions")
     private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 4));
+        final ECBottomDelegate parentDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(parentDelegate));
     }
 
     @Override
